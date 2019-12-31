@@ -1,13 +1,8 @@
-module.exports = {
-    module: {
-      rules: [
-        {
-          test: /\.js$/,
-          exclude: /node_modules/,
-          use: {
-            loader: "babel-loader"
-          }
-        }
-      ]
-    }
-  };
+module: {
+  loaders: [
+    { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/,
+     query: {presets: ['stage-0','es2015', 'react']} }
+  ]
+
+  {presets: ['stage-0','es2015', 'react']}
+}
