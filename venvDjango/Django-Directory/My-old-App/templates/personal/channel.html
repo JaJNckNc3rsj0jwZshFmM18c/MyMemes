@@ -1,0 +1,51 @@
+{% extends "personal/header.html" %}
+{% block content %}
+
+
+
+<h1>{{Authors.Author}}</h1>
+
+
+<form method='get' action='#'>
+  <input type="submit"  class="btn btn-danger" value="Follow" name="Follow"/>
+  
+
+</form>
+
+
+
+
+
+
+ 
+{% for i in Authors %}
+
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src='cross.jpg' alt="You are having problem with your internet">
+    <div class="card-body">
+      <h5 class="card-title">{{i}}</h5>
+      <p class="card-text">Desktption: {{i.descriptions}}  </p>
+      <a href="http://127.0.0.1:8000/user/{{i.Author.id}}">By:{{i.Author}}</a>
+      
+      <a href="http://127.0.0.1:8000/posts/{{i.id}}" class="btn btn-primary">watch the video</a>
+      <button type="button" class="btn btn-danger">Like <span class="badge badge-light">{{i.likes}}</span>  <span class="badge badge-light">{{i.views}}</span> </button>
+      
+      
+    </div>
+
+    
+    
+    
+
+</div>
+
+&nbsp;
+&nbsp;
+&nbsp;
+
+
+{% endfor %}
+
+
+
+{% endblock %}

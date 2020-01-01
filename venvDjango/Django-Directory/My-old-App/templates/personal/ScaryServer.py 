@@ -1,0 +1,23 @@
+import socket
+import threading
+import subprocess
+                        #ipv4              #tcp
+server = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+
+port = 7000
+host = "0.0.0.0"
+
+server.bind((host,port))
+server.listen(5)
+
+print("listening.....")
+
+
+def handle_client(client_socket):
+    while True:
+            hello = str(input("write:"))
+            client_socket.send(hello.encode('utf-8'))
+            request = client_socket.recv(4096).decode('utf-8')
+            print(request)
+            
+    #client_socket.close()
