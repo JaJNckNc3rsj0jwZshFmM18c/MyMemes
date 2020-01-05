@@ -4,10 +4,18 @@ export class FollowersCircles extends Component {
   render() {
     return (
       <div>
+
+
+
+        &nbsp;
+        
+        
         <div className="followers"></div>
           
           
       </div>
+
+
     )
   }
 }

@@ -52,8 +52,10 @@ export class SideBar extends Component {
           <p className="tooltiptext">Trending</p>
           </div>
           
-          
-          {this.CirclesInMaking()}
+       
+
+          {CirclesInMaking()}
+
           
           
 
