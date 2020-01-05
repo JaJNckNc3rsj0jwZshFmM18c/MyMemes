@@ -1,24 +1,46 @@
 import React, { Component } from 'react'
 import "./mymeme.css"
+import FollowersCircles from "./FollowersCircles.js"
 
 
 export class SideBar extends Component {
 
 
 
+
+  
+
   render() {
+    const Subscription = () => { return alert("yo boy"); };
+
+
+
+    const CirclesInMaking = () => {
+            var circles = [];
+            for (var i = 0; i < 3; i++)
+            {
+
+                circles.push(<FollowersCircles/>);
+
+
+            }
+          return circles;
+
+  };
     return (
+
+      
       <div className="sidebar">
         
 
         <div name="Applications" className="Links" >
 
-
+     
 
 
         
-        <div  className="tooltip" >click here
-          <p className="tooltiptext">Subscribers</p>
+        <div  onClick={Subscription}  className="material-icons" id="tooltip" >people
+          <p className="tooltiptext">SUBSCRIPTION</p>
           </div>
 
 
@@ -29,12 +51,12 @@ export class SideBar extends Component {
           <div  id="tooltip" className="material-icons">cloud_upload
           <p className="tooltiptext">Trending</p>
           </div>
-
-
-
-
-          <div className="followers"></div>
           
+          
+          {this.CirclesInMaking()}
+          
+          
+
           </div>
       
       

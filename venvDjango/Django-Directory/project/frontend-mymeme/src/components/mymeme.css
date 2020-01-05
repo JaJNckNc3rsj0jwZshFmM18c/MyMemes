@@ -10,13 +10,13 @@ padding: 0;
 
 }
 
-.tooltip {
+#tooltip {
   position: relative;
   display: inline-block;
   border-bottom: 1px dotted black;
 }
 
-.tooltip .tooltiptext {
+#tooltip .tooltiptext {
   visibility: hidden;
   width: 120px;
   background-color: black;
@@ -30,7 +30,7 @@ padding: 0;
   z-index: 1;
 }
 
-.tooltip:hover .tooltiptext {
+#tooltip:hover .tooltiptext {
   visibility: visible;
 }
 
@@ -84,7 +84,7 @@ padding: 0;
   background-color:black;
   border-radius:50%;
 
-
+  left: -8px;
   width: 2%;
   padding:20px;
           }
