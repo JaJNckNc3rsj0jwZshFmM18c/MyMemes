@@ -14,10 +14,11 @@ padding: 0;
 
 {
 overflow:scroll;
-width: 70px;
+width: 100px;
 height: 60%;
-left: -55px;
+left: -100px;
 top: 20px;
+padding: 3px;
 
 
 
@@ -68,7 +69,7 @@ margin-left:  -29.5px;
 #tooltip .tooltiptext {
   visibility: hidden;
   width: 100px;
-  background-color: rgba(196, 173, 173, 0.678);
+  background-color: rgba(122, 111, 111, 0.849);
   height: 15px;
   color: #fff;
   text-align: center;
@@ -111,18 +112,22 @@ margin-left:  -29.5px;
 {
 
 
- 
+  position: relative;
+   
   visibility: visible;
 
   
   border-radius:50px;
 
-  background-color: rgba(185, 174, 174, 0.596);
+  background-color: rgba(185, 174, 174, 0);
 
-  padding:20px;
+  padding:24px;
+  top: -0px;
+  width: 2%;
+  left: -5px;
+  z-index: 2;
 
-  top:-45px;
-  position: relative;
+  
 
 
 }
@@ -189,9 +194,15 @@ margin-left:  -29.5px;
   background-color:black;
   border-radius:50%;
 
-  left: 1px;
+  left: 4px;
   width: 2%;
   padding:20px;
+
+  position:absolute;
+  z-index: 1;
+  top: 3px;
+
+  
           }
 
 .Links

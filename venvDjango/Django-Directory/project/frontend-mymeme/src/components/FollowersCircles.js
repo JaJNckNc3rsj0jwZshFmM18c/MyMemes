@@ -1,7 +1,82 @@
 import React, { Component } from 'react'
 
 export class FollowersCircles extends Component {
+
+  
+  constructor()
+  {
+
+    super();
+
+    this.state = {
+      backgroundColor: "rgba(185, 174, 174, 0)",
+
+
+
+
+
+
+    }
+
+
+
+
+  }
+
+
+
+
   render() {
+
+
+    const Hover_OverFollowers= () => { 
+      
+      
+      
+      
+      this.setState(
+
+        {
+
+
+          backgroundColor: "rgba(185, 174, 174, 0.596)",
+
+
+        }
+
+
+
+
+
+      )
+    
+    
+    
+    
+    
+    };
+
+
+
+    const  HoverLeave_OverFollowers = () =>
+
+    {
+
+
+      this.setState({
+
+              backgroundColor: "rgba(185, 174, 174, 0)",
+
+
+      })
+
+
+    };
+    const { backgroundColor} = this.state;
+
+
+
+
     return (
       <div>
 
@@ -9,17 +84,24 @@ export class FollowersCircles extends Component {
 
         &nbsp;
         
+        <div style={{backgroundColor}} className="followers-hover">
         
-        <div className="followers">
+        <div onMouseLeave= {HoverLeave_OverFollowers} onMouseOver={Hover_OverFollowers} className="followers">
         
         
-          
+        
         
         
         
         
         </div>
-        <div className="followers-hover"></div>
+
+        
+        
+        
+        </div>
+       
+        
           
 
 
