@@ -10,6 +10,52 @@ padding: 0;
 
 }
 
+.Scroll
+
+{
+overflow:scroll;
+width: 70px;
+height: 60%;
+left: -55px;
+top: 20px;
+
+
+
+
+ 
+}
+
+.Line-1
+{
+
+
+margin-top: -31px;
+width: 75px;
+margin-left:  -29.5px;
+
+
+
+}
+
+
+
+.Line-2
+{
+
+
+
+width: 75px;
+margin-left:  -29.5px;
+
+
+
+}
+
+
+
+
+
+
 #tooltip {
   position: relative;
   display: inline-block;
@@ -113,7 +159,7 @@ padding: 0;
   background-color:black;
   border-radius:50%;
 
-  left: -8px;
+  left: 1px;
   width: 2%;
   padding:20px;
           }
