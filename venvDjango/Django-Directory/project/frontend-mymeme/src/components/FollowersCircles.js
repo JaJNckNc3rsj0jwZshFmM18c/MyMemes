@@ -10,8 +10,22 @@ export class FollowersCircles extends Component {
         &nbsp;
         
         
-        <div className="followers"></div>
+        <div className="followers">
+        
+        
           
+        
+        
+        
+        
+        </div>
+        <div className="followers-hover"></div>
+          
+
+
+
+
+
           
       </div>
 

@@ -154,7 +154,7 @@ if (this.state.MoreFollowers === false)
          </div>
           
 
-          <div onClick={MoreFollowers} className="material-icons"
+          <div  id="Click-more" onClick={MoreFollowers} className="material-icons"
 >{this.state.Icon}
 </div>
           

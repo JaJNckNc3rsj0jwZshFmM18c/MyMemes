@@ -59,6 +59,7 @@ margin-left:  -29.5px;
 #tooltip {
   position: relative;
   display: inline-block;
+  cursor:pointer;
   
   
 
@@ -88,28 +89,57 @@ margin-left:  -29.5px;
   
 }
 
-#tooltip:hover .OnClickedButtons{
+#tooltip:hover {
 
   visibility: visible;
-
-
-
-}
-
-
-.OnClickedButtons
-
-{
 
   position: relative;
   border-radius:50px;
 
-  background-color: rgba(153, 19, 19, 0.76);
+  background-color: rgba(185, 174, 174, 0.596);
+
+  padding:5px;
 
 
 
 
 }
+
+
+
+.followers-hover
+{
+
+
+ 
+  visibility: visible;
+
+  
+  border-radius:50px;
+
+  background-color: rgba(185, 174, 174, 0.596);
+
+  padding:20px;
+
+  top:-45px;
+  position: relative;
+
+
+}
+
+
+
+#Click-more
+{
+
+  cursor:pointer;
+
+
+
+
+
+}
+
 
 .navbarCss
 {
@@ -155,7 +185,7 @@ margin-left:  -29.5px;
 
 .followers {
   
-  position:relative;
+  
   background-color:black;
   border-radius:50%;
 
