@@ -9,7 +9,7 @@ export class Navbar extends Component {
 
 
           
-          <div className= 'navbarCss'>
+          <div  className= 'navbarCss'>
           
           
           <p className="icon">icon</p>

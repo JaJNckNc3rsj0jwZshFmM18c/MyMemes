@@ -120,7 +120,7 @@ if (this.state.MoreFollowers === false)
 
       
       
-      <div className="sidebar">
+      <div className="sidebar" id="shadow-sidebar">
         
 
         <div name="Applications" className="Links" >
