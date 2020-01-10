@@ -3,7 +3,14 @@ import Navbar from "./components/Navbar.js"
 
 import './components/mymeme.css'
 
+
+/*
 import SideBar from "./components/SideBar.js"
+import MemePost from "./components/MemePost"
+import MemeVideos from "./components/MemeVideos"
+*/
+
+import online_profilePic from "./components/online_profilePic.js"
 
 
 export class App extends Component {
@@ -15,7 +22,7 @@ export class App extends Component {
                 
                     
                            
-                                <Navbar />
+                               
 
 
                             
@@ -25,11 +32,17 @@ export class App extends Component {
 
                                
                            
-                             
+                        <online_profilePic/>
+                        {/* <Navbar/>
+                            <SideBar/>
+
+                               
+
+
+
+                              <MemePost/>
+                              <MemeVideos/> */}    
                             
-
-
-                               <SideBar/> 
                              
 
 

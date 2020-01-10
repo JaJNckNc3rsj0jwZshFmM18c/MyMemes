@@ -14,9 +14,27 @@ export class Navbar extends Component {
           
           <p className="icon">icon</p>
           
+
+     
+          <input className="SearchName">
           
           
-          <div className="profilePic"></div>
+     
+          
+          
+          </input>
+          <a href="www.facebook.com" id="Moving-Search" className="material-icons" > search</a>
+
+
+   
+          
+          
+          <div className="profilePic">
+          
+       
+          
+          
+          </div>
           <p className="trophee">trophee</p>
 
           
