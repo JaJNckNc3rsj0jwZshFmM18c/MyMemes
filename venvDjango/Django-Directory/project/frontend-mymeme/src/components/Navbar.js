@@ -28,14 +28,18 @@ export class Navbar extends Component {
 
    
           
-          
-          <div className="profilePic">
-          
-       
-          
-          
-          </div>
-          <p className="trophee">trophee</p>
+   
+   <div className="line-6"></div>
+   
+   <div  className = "profilePic">
+
+
+      <p className="id-title">MemsterkIng69</p>
+      
+      <div className="online"></div>
+
+  </div>
+      
 
           
           

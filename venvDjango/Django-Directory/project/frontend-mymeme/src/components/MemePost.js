@@ -1,9 +1,37 @@
 import React, { Component } from 'react'
 
-import online_profilePic from "online_profilePic.js"
+
 
 export class MemePost extends Component {
+
+  constructor()
+  {
+    super();
+
+
+
+    this.state= {Post_Value: '',}
+
+
+
+
+  }
+
+
+
+ 
+
   render() {
+
+
+    const Change_PostValue = (event) =>
+
+    {
+  
+  
+      this.setState({Post_Value: event.target.value})
+      
+    }
     return (
       <div>
         
@@ -12,13 +40,22 @@ export class MemePost extends Component {
 
           <div className="MakingPosts">
           
-            <input placeholder=" What are you going to meme about?" className="writing "></input>
+
+
+            <form onSubmit="">
+
+                   <input onChange={this.Change_PostValue} value={this.state.Post_Value} placeholder=" What are you going to meme about?" className="writing "></input>
+
+
+                  <input className="Send" type="submit" value="Submit" />
+            </form>
+           
 
 
             
 
-            <online_profilePic/>
-            <div className="Gallery" ></div>
+             <div className="profile-Pic"></div>
+            <div className="Gallery" >Gallery</div>
             <div className="gif"> 
             
             
@@ -27,8 +64,8 @@ export class MemePost extends Component {
             
             
             </div>
-            <div className="Upload"></div>
-            <div className="Send">  </div>
+            <div className="Upload">Upload</div>
+            {/*<div className="Send"> Send </div>*/}
 
 
             
