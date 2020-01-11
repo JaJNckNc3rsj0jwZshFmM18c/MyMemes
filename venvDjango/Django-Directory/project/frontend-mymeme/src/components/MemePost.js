@@ -32,6 +32,36 @@ export class MemePost extends Component {
       this.setState({Post_Value: event.target.value})
       
     }
+
+
+    const Post_TOAPI = await fetch('', 
+    
+    {
+
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+
+      body: JSON.stringify({}), }) 
+      console.log( await Response.json())
+
+
+
+
+
+   
+    
+    
+    
+    
+    
+    
+    )
+
+     
+
+
+
+
     return (
       <div>
         
@@ -42,9 +72,9 @@ export class MemePost extends Component {
           
 
 
-            <form onSubmit="">
+            <form onSubmit={this.Post_TOAPI}>
 
-                   <input onChange={this.Change_PostValue} value={this.state.Post_Value} placeholder=" What are you going to meme about?" className="writing "></input>
+                   <input type="text" onChange={Change_PostValue} value={this.state.Post_Value} placeholder=" What are you going to meme about?" className="writing "></input>
 
 
                   <input className="Send" type="submit" value="Submit" />

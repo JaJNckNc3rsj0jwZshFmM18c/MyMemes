@@ -1,8 +1,9 @@
 from django.shortcuts import render
 
-from leads.models import Lead
+from leads.models import postss
 from leads.serializers import LeadSerializer
 from rest_framework import generics
+
 class LeadListCreate(generics.ListCreateAPIView):
-    queryset = Lead.objects.all()
+    queryset = postss.objects.all()
     serializer_class = LeadSerializer
