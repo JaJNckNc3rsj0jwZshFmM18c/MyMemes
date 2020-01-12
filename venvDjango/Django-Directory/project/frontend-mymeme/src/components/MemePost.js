@@ -12,54 +12,39 @@ export class MemePost extends Component {
 
     this.state= {Post_Value: '',}
 
-
+    
 
 
   }
 
-
-
- 
-
-  render() {
-
-
-    const Change_PostValue = (event) =>
-
-    {
+  Post_TOAPI = fetch('http://127.0.0.1:8000/api/lead/', 
   
-  
-      this.setState({Post_Value: event.target.value})
-      
-    }
-
-
-    const Post_TOAPI = await fetch('', 
-    
-    {
-
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-
-      body: JSON.stringify({}), }) 
-      console.log( await Response.json())
-
-
-
+  {
 
 
    
-    
-    
-    
-    
-    
-    
-    )
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
 
-     
+    body: JSON.stringify({descriptions: this.State.Post_Value, }) 
 
 
+
+  });
+
+  Change_PostValue = (event) =>
+
+  {
+
+
+    this.setState({Post_Value: event.target.value})
+    
+  }
+
+
+
+
+  render() {
 
 
     return (
@@ -74,7 +59,7 @@ export class MemePost extends Component {
 
             <form onSubmit={this.Post_TOAPI}>
 
-                   <input type="text" onChange={Change_PostValue} value={this.state.Post_Value} placeholder=" What are you going to meme about?" className="writing "></input>
+                   <input type="text" onChange={this.Change_PostValue} value={this.state.Post_Value} placeholder=" What are you going to meme about?" className="writing "></input>
 
 
                   <input className="Send" type="submit" value="Submit" />

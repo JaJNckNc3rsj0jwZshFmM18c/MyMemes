@@ -1,7 +1,10 @@
 from rest_framework import serializers
-from leads.models import Lead
-class LeadSerializer(serializers.ModelSerializer):
+from leads.models import postss
+
+
+
+class PostssSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Lead
-        fields = ('id', 'name', 'email', 'message')
+        model = postss
+        fields = ('descriptions',)
 # Create your views here.
