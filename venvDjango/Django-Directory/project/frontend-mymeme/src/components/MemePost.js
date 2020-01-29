@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 
+import MemeVideos, {GET_TOAPI} from "./MemeVideos.js"
+import AjaxPost from  "./AjaxPost.js"
+import UploadButton from  "./UploadButton"
+
 
 
 export class MemePost extends Component {
@@ -10,14 +14,27 @@ export class MemePost extends Component {
 
 
 
-    this.state= {Post_Value: '',}
+    this.state= {Post_Value: '', Descriptions: '', display: '', Sent: false,  }
 
     
 
 
   }
 
-  Post_TOAPI = fetch('http://127.0.0.1:8000/api/lead/', 
+
+
+
+
+  
+  Post_TOAPI = (event) => 
+  {
+  
+
+    event.preventDefault()
+    
+   
+  
+  fetch('http://127.0.0.1:8000/api/lead/', 
   
   {
 
@@ -26,11 +43,54 @@ export class MemePost extends Component {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
 
-    body: JSON.stringify({descriptions: this.State.Post_Value, }) 
+    body: JSON.stringify({descriptions: this.state.Post_Value, }),
 
 
+
+  }).then((response) => {
+
+
+    return response.json()
+  }) .then((myJson) => {
+
+
+   
+
+    
+
+    this.setState({Descriptions: myJson , display: "block", Sent: true} )
+   
+
+    
+
+    
+   
 
   });
+  
+  
+}
+
+
+
+  Posting = () =>
+  {
+
+
+    const { display } = this.state;
+
+    if (this.state.Sent == true)
+    {
+
+
+     var Aj = <AjaxPost style={{display}} Descriptionss =  {this.state.Descriptions.descriptions} />
+
+
+
+    }
+
+    return Aj;
+  }
 
   Change_PostValue = (event) =>
 
@@ -38,6 +98,9 @@ export class MemePost extends Component {
 
 
     this.setState({Post_Value: event.target.value})
+    console.log(this.state.Post_Value)
+
+    
     
   }
 
@@ -45,7 +108,7 @@ export class MemePost extends Component {
 
 
   render() {
-
+    
 
     return (
       <div>
@@ -70,7 +133,7 @@ export class MemePost extends Component {
             
 
              <div className="profile-Pic"></div>
-            <div className="Gallery" >Gallery</div>
+             <UploadButton/>
             <div className="gif"> 
             
             
@@ -81,10 +144,13 @@ export class MemePost extends Component {
             </div>
             <div className="Upload">Upload</div>
             {/*<div className="Send"> Send </div>*/}
-
-
+            
+           
             
             
+
+            
+            {this.Posting()}
             
             
             
