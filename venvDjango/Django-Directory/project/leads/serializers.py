@@ -6,5 +6,13 @@ from leads.models import postss
 class PostssSerializer(serializers.ModelSerializer):
     class Meta:
         model = postss
-        fields = ('descriptions',)
+        fields = ('descriptions', 'Pictures_file', )
 # Create your views here.
+
+
+
+class PictureSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = postss
+        fields = ( 'descriptions', 'Pictures_file',)
+

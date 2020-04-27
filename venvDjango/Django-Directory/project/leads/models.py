@@ -13,7 +13,8 @@ import re
 class postss(models.Model):
     #start_date = models.DateTimeField(auto_now_add= True)
     Author =  models.ForeignKey(User, on_delete=models.CASCADE, default='', null=True, related_name= "memster") 
-    post_file = models.FileField()
+    Pictures_file = models.ImageField(upload_to='post_images')
+    Videos_file = models.FileField()
     Who_like = models.ManyToManyField(User)
     
     descriptions = models.CharField(max_length=1000)
