@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import MemeVideos, {GET_TOAPI} from "./MemeVideos.js"
 import AjaxPost from  "./AjaxPost.js"
 import UploadButton from  "./UploadButton"
+import Tenor_Gif from "./Tenor_Gif.js"
 
 
 
@@ -14,7 +15,7 @@ export class MemePost extends Component {
 
     
 
-    this.state= {Post_Value: '', Descriptions: '', display: '', Sent: false, picture: null,Pictures: null, Personal_Ajax:[], }
+    this.state= {Post_Value: '', Descriptions: '', display: '', Sent: false, picture: null,Pictures: null, Personal_Ajax:[],Gifs: null, }
 
  
 
@@ -122,6 +123,7 @@ export class MemePost extends Component {
 
     
     this.setState({Pictures: picture})
+    console.log("PICTFGUdf")
 
     
 
@@ -153,22 +155,35 @@ return this.state.Personal_Ajax
 
 }
 
+
+Gifs_1 = () =>
+{
+
+  this.setState({Gifs: <Tenor_Gif  Files_Gif= {this.Post_pic}/> })
+  
+
+
+
+
+}
+
   render() {
     console.log(this.state.Sent )
     return (
       <div>
-        
+         
+
         {this.state.Sent ? this.Ajax_Posts_True():  <ul>
     {this.state.Personal_Ajax.map(function(item) {
       return <li className = "spacings" key={item}>{item}</li>;
     })}
   </ul>}
-
-
-
+            
           <div className="MakingPosts">
           
 
+         
+          
 
             <form onSubmit={this.Post_TOAPI}>
 
@@ -184,19 +199,20 @@ return this.state.Personal_Ajax
 
              <div className="profile-Pic"></div>
          
-            <div className="gif"> 
+            <button onClick={this.Gifs_1} className="gif"> 
+        
             
             
             <p className="GIF-text">GIF</p>
             
             
             
-            </div>
+            </button>
             <div className="Upload">Upload</div>
             {/*<div className="Send"> Send </div>*/}
             
            
-            
+           
             
 
             
@@ -211,9 +227,12 @@ return this.state.Personal_Ajax
           </div>
 
 
+         
+        {this.state.Gifs}
+              
+           
 
-
-
+         
        
 
 

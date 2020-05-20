@@ -172,7 +172,7 @@ return this.state.Personal_Ajax
 
             <form onSubmit={this.Post_TOAPI}>
 
-                   <input type="text" onChange={this.Change_PostValue} value={this.state.Post_Value} placeholder=" What are you going to meme about?" className="writing "></input>
+                   <input type="text" onChange={this.Change_PostValue} value={this.state.Post_Value} placeholder=" What are you going to talk about?" className="writing "></input>
 
                       <UploadButton Files_pictures= {this.Post_pic} />
                   <input className="Send" type="submit" value="Submit" />

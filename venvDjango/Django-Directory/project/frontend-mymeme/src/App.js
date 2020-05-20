@@ -15,6 +15,7 @@ import AjaxPost from "./components/AjaxPost"
 
 
 
+
 export class App extends Component {
     render() {
         return (
@@ -36,16 +37,18 @@ export class App extends Component {
                            
                         
                        <Navbar/>
+
+                       
                             <SideBar/>
 
                                
-
+         
 
 
                               <MemePost/>
 
                               
-
+               
                             
 
 

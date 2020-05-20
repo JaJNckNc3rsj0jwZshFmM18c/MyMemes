@@ -10,7 +10,7 @@ export class AjaxPost extends Component {
     
 
    console.log(this.props.Descriptionss)
-   console.log(this.props.Picturess)
+   
     
     
 
@@ -51,38 +51,37 @@ export class AjaxPost extends Component {
 
                               <div className="Description">
                                     
-                              <p> {this.props.Descriptionss} </p>
-      
-      
-                  
-      
-                               <div className="sizing-comment">
-
-
-
-     
-
-                                    <div className="Profile-Videos"></div>
-
-                                    <div className="Comment">Like</div>
-                                    <div className="Likes"></div>
-                                    <div className="unlike">unlike</div>
-                                    <div className="Unlikes"></div>
-                                    <div className="Like">com</div>
-                                    <div className="Comments">  </div> 
-
-
-                                    <div className="Line-4"></div>
-
-
+                              <p>{this.props.Descriptionss} </p>
+                              
                               </div>
+                              
+                                <div>
+                                <img className = "Videoss" src={this.props.Picturess} alt="hello" ></img>
+                                  <div className="comments-liking">
+                                        <div className="sizing-comment">
+                                        <div className="Profile-Videos"></div>
+                                        <div className="Comment">Like</div>
+                                        <div className="Likes"></div>
+                                        <div className="unlike">unlike</div>
+                                        <div className="Unlikes"></div>
+                                        <div className="Like">com</div>
+                                        <div className="Comments">  </div> 
+                                        <div className="Line-4"></div>
+                                  </div>
+                                   
+
+                                </div>
+                              
+
+
+                             
   
      </div>
       
 
 
        
-      <img className = "Videoss" src={this.props.Picturess} alt="hello" ></img>
+      
 
         
 

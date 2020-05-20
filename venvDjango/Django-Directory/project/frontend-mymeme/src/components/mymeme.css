@@ -2,15 +2,92 @@
 
 
 
+
+
+
+
 .moving-everything
 {
 
 
   position:relative;
   top: -900px;
+  padding: 4%;
+  left: -180px;
+  
 
 
 }
+
+
+.Gif_box:hover
+{
+
+
+  filter: brightness(80%)
+}
+
+
+.horizontal_line_Gif
+{
+
+position:relative;
+top: 25px;
+background: rgb(129, 124, 124)
+
+
+
+
+}
+
+
+.Gif_box
+{
+
+height: 150px;
+width:150px;
+position:relative;
+top: 60px;
+left: 8px;
+
+background: rgb(104, 100, 100);
+border-radius: 30px;
+
+
+}
+
+
+
+.why
+{
+
+position:absolute;
+top: 90px;
+left: 50px;
+color:  rgb(240, 238, 238);
+font-size: 30px;
+
+
+}
+
+.GIF_position
+{
+
+
+position: relative;
+top: -800px;
+left: 100px;
+border-radius: 30px;
+width: 400px;
+height: 300px;
+background: gray;
+
+
+
+}
+
+
+
 
 
 .Spacings
@@ -24,12 +101,15 @@
 
 }
 
+
+
 body
 {
 
 margin: 0; 
 padding: 0;
 background-color:#ffffff;
+
 
 
 
@@ -96,7 +176,7 @@ background-color:#ffffff;
 
 {
 
-  position: absolute;
+  position:absolute;
   width: 40px;
   height: 30px;
   left: 410px;
@@ -157,16 +237,43 @@ outline: none;
 
 
 
+.Description
+{
 
+
+  display: flex;
+
+  position: relative;
+  width: 500px;
+  height: 70px;
+  left: 402.5px;
+  top: 690px;
+  
+  
+  background:  #F2EEEE;
+
+  border-radius: 25px;
+
+
+
+}
+
+.comments-liking
+{
+position:relative;
+top: 300px;
+left: 400px;
+
+}
 
 .Videoss
 
 {
 
-
+  position: relative;
   display: block;
 
-  position: absolute;
+  
   width: 500px;
   height: 300px;
   left: 400px;
@@ -181,13 +288,8 @@ outline: none;
 
 }
 
-.ul
-{
-
-
-  white-space:"normal"
-
-
+ul {
+  list-style-type: none;
 }
 
 
@@ -196,11 +298,11 @@ outline: none;
 {
 
 
-  position: absolute;
+ position:relative;
   width: 40px;
   height: 30px;
-  left: 454px;
-  top: 385px;
+  left: 450px;
+  top: 325px;
   background: #C4C4C4;
   border-radius: 14px;
 
@@ -208,16 +310,19 @@ outline: none;
 
 
 }
+
+
+
 .unlike
 
 {
 
 
-  position: absolute;
+  position:relative;
   width: 40px;
   height: 30px;
   left: 60px;
-  top: 385px;
+  top: 355px;
   background: #C4C4C4;
   border-radius: 14px;
 
@@ -232,7 +337,7 @@ outline: none;
 {
 
 
-  position: absolute;
+  position:relative;
   width: 40px;
   height: 30px;
   left: 10px;
@@ -244,7 +349,6 @@ outline: none;
 
 
 }
-
 
 .sizing-comment
 {
@@ -258,33 +362,18 @@ outline: none;
 }
 
 
-.Description
-{
 
+div {
+  word-wrap: break-word;
+  }
 
-  display: flex;
-
-  position: absolute;
-  width: 500px;
-  height: 70px;
-  left: 402.5px;
-  top: 610px;
-  
-  
-  background:  #F2EEEE;
-
-  border-radius: 25px;
-
-
-
-}
 
 
 .Profile-Videos
 {
 
   background: linear-gradient(0deg, #C4C4C4, #C4C4C4), linear-gradient(180deg, #BB5454 0%, rgba(255, 255, 255, 0) 100%);
-  position: absolute;
+  position: relative;
   border-radius: 50%;
   left: -10px;
   width: 40px;
@@ -299,7 +388,7 @@ outline: none;
 .Line-4
 {
 
-  position: absolute;
+  position: relative;
   width: 500.01px;
   height: 0px;
  
@@ -307,7 +396,7 @@ outline: none;
   border: 1px solid rgba(0, 0, 0, 0.14);
   transform: rotate(-0.17deg);
   left: 5px;
-  top: 420px;
+  top: 350px;
 
 }
 
@@ -431,7 +520,14 @@ margin-left:  -29.5px;
 
 }
 
+#Scroll_overflow
+{
 
+  overflow: scroll;
+
+
+  ;
+}
 
 .Line-2
 {
