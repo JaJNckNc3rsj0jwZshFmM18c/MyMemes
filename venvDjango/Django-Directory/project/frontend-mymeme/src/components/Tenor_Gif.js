@@ -45,7 +45,10 @@ export class Tenor_GIF extends Component {
   Gif_Post = (Post_value) =>
   {
     
-    console.log("hello")
+    
+
+    
+
     this.props.Files_Gif(Post_value)
     
 }

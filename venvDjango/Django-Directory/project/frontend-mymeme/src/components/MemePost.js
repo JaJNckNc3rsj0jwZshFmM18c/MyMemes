@@ -15,7 +15,7 @@ export class MemePost extends Component {
 
     
 
-    this.state= {Post_Value: '', Descriptions: '', display: '', Sent: false, picture: null,Pictures: null, Personal_Ajax:[],Gifs: null, }
+    this.state= {Post_Value: '', Descriptions: '', display: '', Sent: false, picture: null,Pictures: null, Personal_Ajax:[],Gifs: null, changing_name: '' }
 
  
 
@@ -24,31 +24,67 @@ export class MemePost extends Component {
 
   
 
-  
+  componentDidUpdate(prevprops, prevState)
+  {
+       
+      if(prevState.changing_name !== this.state.changing_name)
+      {
+
+         
+          
+
+         console.log("changed")
+
+
+      }
+
+
+     
+     
+
+  }
 
 
   
   Post_TOAPI = (event) => 
   {
   
-
+    
     event.preventDefault()
     
     const formData = new FormData();
-   
-    formData.append('Pictures_file', this.state.Pictures, );
+
+    try {
+
+
+      if(this.state.Pictures.match("https:\/\/media.tenor.com\/image")[0] === "https://media.tenor.com/image"  )
+  {
+
+    
+  
+   this.setState({changing_name: 'GIFS_String'})
+
+
+  }
+      
+    } catch (error) {
+
+
+     
+
+      this.setState({changing_name: 'Pictures_file' })
+    
+    }
+  
+ 
+    console.log(this.state.changing_name) 
+    formData.append(this.state.changing_name, this.state.Pictures );
     formData.append('descriptions', this.state.Post_Value );
     
+   
     
    
   
-    /*
-    const req = new XMLHttpRequest();
-
-    
-    req.open("POST", "http://localhost:8000/api/pictures");
-    req.send(formData);
-    */
  
 
 
@@ -78,10 +114,10 @@ export class MemePost extends Component {
    
                 
 
-           
+   
 
    
-    this.setState({Descriptions: myJson.descriptions, picture: myJson.Pictures_file , display: "block", Sent: true} )
+    this.setState({Descriptions: myJson.descriptions, picture: myJson[this.state.changing_name] , display: "block", Sent: true} )
  
     
 

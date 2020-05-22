@@ -38,7 +38,7 @@ class picture(APIView):
 
     def post(self, request, format=None):
         serializer = PictureSerializer(data=request.data, context={"request": request})
-
+        print(serializer.initial_data)
 
         
         if serializer.is_valid():
