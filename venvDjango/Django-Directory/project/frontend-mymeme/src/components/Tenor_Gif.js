@@ -25,8 +25,8 @@ export class Tenor_GIF extends Component {
         const array_0 = [];
         const Arrays_1 = array_0.concat(myJson.tags);
 
-        const map_1 = Arrays_1.map((x) => (
-          <img src={x.image} className="Gif_box" alt="h" />
+        const map_1 = Arrays_1.map((x,index) => (
+          <img  key= {index}  src={x.image} className="Gif_box" alt="h" />
         ));
         //Fix search bar GIF.
 
@@ -48,7 +48,7 @@ export class Tenor_GIF extends Component {
     
 
     
-
+    console.log(Post_value)
     this.props.Files_Gif(Post_value)
     
 }
@@ -80,14 +80,14 @@ export class Tenor_GIF extends Component {
 
       //this.setState({  Gif:myJson.tags[0].image,  } )
        
-      const map_1 = Arrays_1.map((x) => 
+      const map_1 = Arrays_1.map((x,index) => 
      
       (
       
         
 
 
-        <img  onClick={() => this.Gif_Post(x.media[0].gif.url)} src={x.media[0].gif.url} className="Gif_box" alt="h" />
+        <img key={index}  onClick={() => this.Gif_Post(x.media[0].gif.url)} src={x.media[0].gif.url} className="Gif_box" alt="h" />
       ));
       //Fix search bar GIF.
 
@@ -108,19 +108,22 @@ export class Tenor_GIF extends Component {
     this.Search_Gif()
   };
 
+
+
+   toggle_hover = () => {
+    this.setState((prev) => ({ hover: !prev.hover }));
+
+    if (this.state.hover == true) {
+      this.setState((prev) => ({
+        filter: "brightness(80%)",
+        hover: !prev.hover,
+      }));
+    }
+  };
   render() {
     
 
-    const toggle_hover = () => {
-      this.setState((prev) => ({ hover: !prev.hover }));
-
-      if (this.state.hover == true) {
-        this.setState((prev) => ({
-          filter: "brightness(80%)",
-          hover: !prev.hover,
-        }));
-      }
-    };
+    
 
     const { filter } = this.state;
     return (

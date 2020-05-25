@@ -15,7 +15,7 @@ class postss(models.Model):
     Author =  models.ForeignKey(User, on_delete=models.CASCADE, default='', null=True, related_name= "memster") 
     Pictures_file = models.FileField ( blank = True,upload_to='post_images')
     GIFS_String = models.CharField( blank = True, max_length= 200)
-    Videos_file = models.FileField()
+    Videos_file = models.FileField(blank= True)
     Who_like = models.ManyToManyField(User)
     
     descriptions = models.CharField(max_length=1000)

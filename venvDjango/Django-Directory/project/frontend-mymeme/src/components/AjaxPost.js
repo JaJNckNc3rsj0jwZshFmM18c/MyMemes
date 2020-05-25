@@ -10,10 +10,40 @@ export class AjaxPost extends Component {
     
 
    console.log(this.props.Descriptionss)
-   
+   this.state={imgVideo: null}
     
     
 
+
+  }
+
+
+
+  componentDidMount(props)
+  {
+
+    if(this.props.ImageOrVideo === true)
+    {
+
+    
+    this.setState({imgVideo: <img className = "Videoss" src={this.props.Picturess} alt="hello" ></img> })
+
+
+
+
+
+    }
+    else
+    {
+
+
+      this.setState({imgVideo: <video className="Videoss"   type="video/mp4" > <source  src={this.props.Picturess} ></source>  </video> })
+
+
+
+    }
+
+    
 
   }
 
@@ -56,7 +86,7 @@ export class AjaxPost extends Component {
                               </div>
                               
                                 <div>
-                                <img className = "Videoss" src={this.props.Picturess} alt="hello" ></img>
+                               {this.state.imgVideo}
                                   <div className="comments-liking">
                                         <div className="sizing-comment">
                                         <div className="Profile-Videos"></div>

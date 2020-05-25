@@ -6,11 +6,14 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response 
 from django.http import HttpResponse
 from django.http import JsonResponse
+from rest_framework.pagination import PageNumberPagination
 
 
 
 from leads.serializers import PostssSerializer, PictureSerializer
 from rest_framework import generics
+
+from rest_framework.generics import ListAPIView
 
 class LeadListCreate(generics.ListCreateAPIView):
     queryset = postss.objects.all()
@@ -58,4 +61,9 @@ class picture(APIView):
 
 
 
+class ApiPostView(ListAPIView):
+
+    queryset = postss.objects.all()
+    serializer_class = PostssSerializer
+    pagination_class = PageNumberPagination
 
