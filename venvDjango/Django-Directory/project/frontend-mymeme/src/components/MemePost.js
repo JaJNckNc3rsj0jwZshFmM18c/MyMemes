@@ -4,12 +4,41 @@ import MemeVideos, { GET_TOAPI } from "./MemeVideos.js";
 import AjaxPost from "./AjaxPost.js";
 import UploadButton from "./UploadButton";
 import Tenor_Gif from "./Tenor_Gif.js";
+import WrappedAjax from "./WrappedAjax.js";
 
 export class MemePost extends Component {
-
+    
    Pushing_Objects = [];
+  
   constructor() {
+
     super();
+
+  this.myRef = React.createRef();
+
+    
+    
+  this.observeRef = React.createRef();
+
+  this.observer = new IntersectionObserver( (entries, observer) => {entries.forEach(entry =>{
+        
+        
+        
+        
+      
+    if(entries[0].isIntersecting === true )
+    {
+
+      console.log(this.state.pagenum)
+      console.log("h")
+      this.setState(prevState => ({
+        pagenum: prevState.pagenum + 1
+      }));
+      
+    }
+    
+    });});
+    
 
     this.state = {
       Post_Value: "",
@@ -21,11 +50,21 @@ export class MemePost extends Component {
       Gifs: null,
       changing_name: "",
       Personal_Ajax: [],
+      Peronal_Ajax2:[],
+      pagenum: 1,
+  
       Checker_image: false,
     };
   }
 
+  
+    
+
+  
   componentDidMount() {
+   
+    
+    
     fetch(
       "http://127.0.0.1:8000/api/lead/?page=1",
 
@@ -79,21 +118,140 @@ export class MemePost extends Component {
           Personal_Ajax: this.state.Personal_Ajax.concat(this.Pushing_Objects),
         });
       });
+
+
+      
+    
+      
+         
+
+      
+      
+  
+    
+    
+
+
+
+  }
+
+  
+
+    
+    
+  setRef = el => {
+    console.log("set ref");
+    this.myRef.current = el;
+    this.startObserving();
+  };
+
+  startObserving = () => {
+    if (this.myRef.current !== this.observeRef.current) {
+      console.log("observing el: ", this.myRef.current);
+      this.observeRef.current = this.myRef.current;
+      this.observer.observe(this.observeRef.current);
+    }
+  };
+  
+
+
+
+  componentWillUnmount()
+  {
+
+ console.log("hello componentWillinMoid")
+ this.observer.unobserve(this.myRef.current)
+
+
+    
   }
 
   componentDidUpdate(prevprops, prevState) {
-    if (prevState.picture !== this.state.picture) {
-      {
-        console.log(this.state.picture);
-      }
 
+
+
+    
+    if (prevState.picture !== this.state.picture) {
+      
+        console.log(this.state.picture);
+      
+        
       this.Ajax_Posts_True();
+    }
+
+
+    
+
+    if(prevState.pagenum  !== this.state.pagenum)
+    {
+
+       console.log("page 2 ")
+      fetch(
+        "http://127.0.0.1:8000/api/lead/?page="+ this.state.pagenum ,
+  
+        {
+          method: "GET",
+        }
+      )
+        .then((response) => {
+          return response.json();
+        })
+        .then((myJson) => {
+           
+            
+  
+         
+  
+  
+          const Get_Array = myJson.results.map((x) => {
+           
+  
+  
+            
+            if (x.Pictures_file !== null) {
+             
+              this.Pushing_Objects.push([
+                { display: "block" },
+                x.descriptions,
+                x.Pictures_file,
+                true,
+              ]);
+             
+              
+            } else if (x.GIFS_String !== null) {
+              this.Pushing_Objects.push([
+                { display: "block" },
+                x.descriptions,
+                x.GIFS_String,
+              ]);
+            } else if (x.Videos_file !== null) {
+              this.Pushing_Objects.push([
+                { display: "block" },
+                x.descriptions,
+                x.GIFS_String,
+                false,
+              ]);
+            }
+          });
+  
+          {console.log(this.Pushing_Objects)}
+          this.setState({
+            Personal_Ajax: this.state.Personal_Ajax.concat(this.Pushing_Objects),
+          });
+        });
+  
+
+
+
+
     }
 
     if (this.state.Sent === true) {
       const formData = new FormData();
       formData.append(this.state.changing_name, this.state.Pictures);
       formData.append("descriptions", this.state.Post_Value);
+
+      console.log(this.state.Personal_Ajax[4])
 
       fetch(
         "http://127.0.0.1:8000/api/pictures/",
@@ -121,6 +279,12 @@ export class MemePost extends Component {
   }
 
   Post_TOAPI = (event) => {
+
+
+
+
+    
+  
     event.preventDefault();
 
     try {
@@ -128,14 +292,14 @@ export class MemePost extends Component {
         this.state.Pictures.match("https://media.tenor.com/image")[0] ===
         "https://media.tenor.com/image"
       ) {
-        this.setState({ changing_name: "GIFS_String", Sent: true, Personal_Ajax: this.state.Personal_Ajax.reverse });
+        this.setState({ changing_name: "GIFS_String", Sent: true,  });
       }
     } catch (error) {
-      this.setState({ changing_name: "Pictures_file", Sent: true, Personal_Ajax: this.state.Personal_Ajax.reverse });
+      this.setState({ changing_name: "Pictures_file", Sent: true, });
     }
 
     if (this.state.Checker_image === false) {
-      this.setState({ changing_name: "Videos_file", Sent: true, Personal_Ajax: this.state.Personal_Ajax.reverse });
+      this.setState({ changing_name: "Videos_file", Sent: true,  });
     }
   };
 
@@ -163,7 +327,15 @@ export class MemePost extends Component {
       ],
     ];
 
-    this.setState({ Personal_Ajax: this.state.Personal_Ajax.concat(array_z) });
+
+
+      
+    this.setState(prev => ({
+      Personal_Ajax: [ ...array_z, ...prev.Personal_Ajax ]
+    }));
+
+
+    
 
     /*
   this.setState((state) => ({
@@ -174,33 +346,105 @@ export class MemePost extends Component {
 
   Gifs_1 = () => {
     this.setState({ Gifs: <Tenor_Gif Files_Gif={this.Post_pic} /> });
+    fetch(
+      "http://127.0.0.1:8000/api/lead/?page="+ this.state.pagenum ,
+
+      {
+        method: "GET",
+      }
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((myJson) => {
+         
+
+
+       
+
+
+        const Get_Array = myJson.results.map((x) => {
+         
+
+
+          
+          if (x.Pictures_file !== null) {
+           
+            this.Pushing_Objects.push([
+              { display: "block" },
+              x.descriptions,
+              x.Pictures_file,
+              true,
+            ]);
+           
+            
+          } else if (x.GIFS_String !== null) {
+            this.Pushing_Objects.push([
+              { display: "block" },
+              x.descriptions,
+              x.GIFS_String,
+            ]);
+          } else if (x.Videos_file !== null) {
+            this.Pushing_Objects.push([
+              { display: "block" },
+              x.descriptions,
+              x.GIFS_String,
+              false,
+            ]);
+          }
+        });
+
+        {console.log(this.Pushing_Objects)}
+        this.setState({
+          Personal_Ajax: this.state.Personal_Ajax.concat(this.Pushing_Objects),
+        });
+      });
   };
 
+  
+ 
+  
+ 
   render() {
+    
     return (
+
+
+   
+
+      
       <div>
+        
         {this.state.Gifs}
 
-        {this.state.Personal_Ajax == !null   ? (
+        {this.state.Personal_Ajax ==! null ? (
 
           
           <div>Loadingssssss...</div>
         ) : (
           <ul>
-            {this.state.Personal_Ajax.map(function (item, i) {
-              return (
+            {this.state.Personal_Ajax.map((item, i) => (
+              
                 <li className="spacings" key={i}>
-                  <AjaxPost
+                  <WrappedAjax 
                     ImageOrVideo={item[3]}
                     Descriptionss={item[1]}
                     style={item[0]}
                     Picturess={item[2]}
                   />
                 </li>
-              );
-            })}
+            
+            ))}
           </ul>
         )}
+       
+        <div ref={this.setRef}></div>
+           
+
+         
+      
+
+        
 
         <div className="MakingPosts">
           <form onSubmit={this.Post_TOAPI}>

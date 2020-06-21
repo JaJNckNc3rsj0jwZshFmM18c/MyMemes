@@ -15,18 +15,22 @@ class postss(models.Model):
     Author =  models.ForeignKey(User, on_delete=models.CASCADE, default='', null=True, related_name= "memster") 
     Pictures_file = models.FileField ( blank = True,upload_to='post_images')
     GIFS_String = models.CharField( blank = True, max_length= 200)
-    Videos_file = models.FileField(blank= True)
+    Videos_file = models.FileField(blank=True)
     Who_like = models.ManyToManyField(User)
-    
-    descriptions = models.CharField(max_length=1000)
+
+   
     viewss = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
     Text_Button = models.TextField(default="Like" , max_length = 100000)
     dislikes = models.CharField(max_length = 1000000000)
     Thumbnail = models.FileField()
     title = models.CharField(max_length=30)
-    PostDate = models.DateTimeField(default=datetime.now(), blank=True)
+    descriptions = models.CharField(max_length=1000)
+    
+    PostDate = models.DateTimeField(default=datetime.now, blank=True)
      #models.ForeignKey(User, on_delete=models.CASCADE, default='', null=True)
+     
+
     def __str__(self):
         #return self.start_date
         return self.descriptions
@@ -34,10 +38,11 @@ class postss(models.Model):
         return self.views
         return self.Who_like
         return self.Post_Date
-        
 
+    class Meta:
 
-
+        ordering = ['-PostDate']
+   
 
 class accounts(models.Model): 
         

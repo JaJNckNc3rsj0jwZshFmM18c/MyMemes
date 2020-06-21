@@ -7,10 +7,11 @@ import './components/mymeme.css'
 
 import SideBar from "./components/SideBar.js"
 import MemePost from "./components/MemePost"
-import MemeVideos from "./components/MemeVideos"
+import {Apps} from "./Apps.js"
 import UploadButton from "./components/UploadButton"
 import AjaxPost from "./components/AjaxPost"
-
+import {BrowserRouter, Route} from  "react-router-dom"
+import {Register} from "./components/Register.js"
 
 
 
@@ -19,48 +20,20 @@ import AjaxPost from "./components/AjaxPost"
 export class App extends Component {
     render() {
         return (
-            <div >
-
-
-                
+                    <BrowserRouter>
                     
-                           
-                               
-
-
-                            
-
-                            
-                            
-
-                               
-                           
-                        
-                       <Navbar/>
-
-                       
-                            <SideBar/>
-
-                               
-         
-
-
-                              <MemePost/>
-
-                              
-               
-                            
-
-
+                    <Route path="/home" component={Apps} />
+                    <Route path="/register" component={Register} />
                     
-                        
-                        
+                    
+                    
+                    
+                    </BrowserRouter>
 
-               
-               
-                
-                
-            </div>
+
+
+
+           
         )
     }
 }

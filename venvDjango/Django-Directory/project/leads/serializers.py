@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from leads.models import postss
+from leads.mdoels import accounts
 
 
 
@@ -16,3 +17,15 @@ class PictureSerializer(serializers.ModelSerializer):
         model = postss
         fields = ( 'descriptions', 'Pictures_file', 'GIFS_String', 'Videos_file')
 
+
+
+class AccountsSerializer(serializers.ModelSerializers):
+    class Meta:
+        model = accounts 
+        fields = ('')
+        
+        extra_kwargs = {
+
+
+            'password': {'write_only': True}
+        }

@@ -61,9 +61,21 @@ class picture(APIView):
 
 
 
+
+
+class Accounts(APIView):
+
+    def post(self, request, format=None):
+
+
+        serializer = 
+
+
+
 class ApiPostView(ListAPIView):
 
-    queryset = postss.objects.all()
+    queryset = postss.objects.all() 
     serializer_class = PostssSerializer
     pagination_class = PageNumberPagination
+    
 

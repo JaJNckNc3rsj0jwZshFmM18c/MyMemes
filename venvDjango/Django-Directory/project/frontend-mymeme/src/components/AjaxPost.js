@@ -22,6 +22,9 @@ export class AjaxPost extends Component {
   componentDidMount(props)
   {
 
+
+
+    
     if(this.props.ImageOrVideo === true)
     {
 
@@ -38,6 +41,8 @@ export class AjaxPost extends Component {
 
 
       this.setState({imgVideo: <video className="Videoss"   type="video/mp4" > <source  src={this.props.Picturess} ></source>  </video> })
+
+      
 
 
 
@@ -62,9 +67,11 @@ export class AjaxPost extends Component {
   };*/
 
   render() {
+
+
+   
     return (
-      
-      <div >
+      <div  ref = {this.props.innerRef}>
        &nbsp;
        &nbsp;
        &nbsp;
@@ -126,7 +133,8 @@ export class AjaxPost extends Component {
       </div>
     )
   }
-}
+  }
+
 
 export default AjaxPost
 
