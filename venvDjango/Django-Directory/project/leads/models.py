@@ -47,8 +47,8 @@ class postss(models.Model):
 class accounts(models.Model): 
         
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='accounts')
-    Profile_picture =  models.FileField(default="blah.jpg")
-    email = models.CharField(max_length=100,default="Malcom2000@live.se")
+    Profile_picture =  models.FileField( blank= True, default="blah.jpg")
+    
     Following = models.ManyToManyField(User, related_name='account')  
     Liked_or_Not = models.BooleanField(default=False)
     #profile_picture = models.CharField(max_length=40)

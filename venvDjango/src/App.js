@@ -11,8 +11,7 @@ import {Apps} from "./Apps.js"
 import UploadButton from "./components/UploadButton"
 import AjaxPost from "./components/AjaxPost"
 import {BrowserRouter, Route} from  "react-router-dom"
-import Register from "./components/Register.js"
-import login from "./components/login.js"
+import {Register} from "./components/Register.js"
 
 
 
@@ -25,7 +24,6 @@ export class App extends Component {
                     
             <Route path="/home" component={Apps} />
             <Route path="/register" component={Register} />
-            <Route path="/login" component={login} />
             
             
             

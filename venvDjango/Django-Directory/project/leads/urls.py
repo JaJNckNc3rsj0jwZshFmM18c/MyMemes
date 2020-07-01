@@ -3,5 +3,5 @@ from . import views
 from django.conf.urls.static import static
 from django.conf import settings
 urlpatterns = [
-               path('api/lead/', views.LeadListCreate.as_view() ),path('api/pictures/', views.picture.as_view(),  ),  path('api/posts/', views.ApiPostView.as_view(),  )
+         path('api/register', views.ApiRegister.as_view()),      path('api/lead/', views.LeadListCreate.as_view() ),path('api/pictures/', views.picture.as_view(),  ),  path('api/posts/', views.ApiPostView.as_view(),  )
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -7,10 +7,11 @@ from rest_framework.response import Response
 from django.http import HttpResponse
 from django.http import JsonResponse
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.permissions import AllowAny
 
 
 
-from leads.serializers import PostssSerializer, PictureSerializer
+from leads.serializers import PostssSerializer, PictureSerializer, AccountsSerializer
 from rest_framework import generics
 
 from rest_framework.generics import ListAPIView
@@ -63,12 +64,29 @@ class picture(APIView):
 
 
 
-class Accounts(APIView):
+class ApiRegister(APIView):
+    serializer_class = AccountsSerializer
+    permission_classes = [AllowAny]
 
-    def post(self, request, format=None):
 
+    def post (self, request, format=None):
+        serializer = AccountsSerializer(data= request.data)
 
-        serializer = 
+        print(request.data)
+
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+
+            return Response(serializer.data)
+
+        else:
+
+            print("hello")
+            return Response("Error")
+        
+ 
+
+        
 
 
 
