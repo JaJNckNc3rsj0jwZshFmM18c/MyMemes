@@ -48,6 +48,10 @@ export class MemePost extends Component {
   }
 
   componentDidMount() {
+
+
+
+
     if (JSON.stringify(localStorage.getItem("IsLoggedIn")) === "null") {
         
 
@@ -62,12 +66,17 @@ export class MemePost extends Component {
 
 
     } else {
+
+      
+      var myHeaders = new Headers();
+     myHeaders.append('Authorization', localStorage.getItem("IsLoggedIn"));
+
+     
+
       fetch(
         "http://127.0.0.1:8000/api/lead/?page=1",
 
-        {
-          method: "GET",
-        }
+        { method: "GET", headers: { Authorization: "Bearer " + localStorage.getItem("IsLoggedIn") }}
       )
         .then((response) => {
           return response.json();
@@ -158,6 +167,7 @@ componentDidUpdate(prevprops, prevState)
 
       {
         method: "GET",
+        Authorization:  JSON.stringify(localStorage.getItem("IsLoggedIn"))
       }
     )
       .then((response) => {

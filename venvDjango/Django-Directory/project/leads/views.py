@@ -95,5 +95,5 @@ class ApiPostView(ListAPIView):
     queryset = postss.objects.all() 
     serializer_class = PostssSerializer
     pagination_class = PageNumberPagination
-    
+    print("hell")
 

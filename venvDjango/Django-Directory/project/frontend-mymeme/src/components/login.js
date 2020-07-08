@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import React from 'react';
 
 
-export default function Register() {
+export default function Register(props) {
 
 
 
@@ -28,7 +28,7 @@ export default function Register() {
       
       
      
-      fetch( "http://127.0.0.1:8000/api/token",
+      fetch( "http://127.0.0.1:8000/api/token/",
 
       {
         method: "POST",
@@ -51,7 +51,13 @@ export default function Register() {
 
 
 
-        console.log(myJson)
+        console.log(myJson.access)
+        localStorage.setItem('IsLoggedIn', myJson.access);
+        const { history } = props;
+      if(history)
+      { 
+        history.push('/home');
+  }
 
 
       }
