@@ -10,9 +10,16 @@ import MemePost from "./components/MemePost"
 import MemeVideos from "./components/MemeVideos"
 import UploadButton from "./components/UploadButton"
 import AjaxPost from "./components/AjaxPost"
+import {createStore} from 'redux'
+import reducers from './components/reducers.js'
+import  ProfilePicAction from './components/Action.js'
 
 
 
+let store = createStore(reducers)
+store.subscribe (( ) => console.log(store.getState()))
+
+store.dispatch( ProfilePicAction)
 
 
 
@@ -36,17 +43,7 @@ export class Apps extends Component {
                                
                            
                         
-                       <Navbar/>
-
                        
-                            <SideBar/>
-
-                               
-         
-
-
-                              <MemePost/>
-
                               
                
                             

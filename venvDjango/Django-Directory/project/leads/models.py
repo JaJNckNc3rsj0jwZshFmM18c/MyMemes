@@ -13,7 +13,7 @@ import re
 class postss(models.Model):
     #start_date = models.DateTimeField(auto_now_add= True)
     Author =  models.ForeignKey(User, on_delete=models.CASCADE, default='', null=True, related_name= "memster") 
-    Pictures_file = models.FileField ( blank = True,upload_to='post_images')
+    Pictures_file = models.ImageField ( blank = True,upload_to='post_images')
     GIFS_String = models.CharField( blank = True, max_length= 200)
     Videos_file = models.FileField(blank=True)
     Who_like = models.ManyToManyField(User)
@@ -47,7 +47,7 @@ class postss(models.Model):
 class accounts(models.Model): 
         
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='accounts')
-    Profile_picture =  models.FileField( blank= True, default="blah.jpg")
+    Profile_picture =  models.ImageField( blank= True, default="blah.jpg")
     
     Following = models.ManyToManyField(User, related_name='account')  
     Liked_or_Not = models.BooleanField(default=False)

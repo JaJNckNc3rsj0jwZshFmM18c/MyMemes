@@ -13,13 +13,15 @@ import AjaxPost from "./components/AjaxPost"
 import {BrowserRouter, Route} from  "react-router-dom"
 import Register from "./components/Register.js"
 import login from "./components/login.js"
+import {createStore} from 'redux'
+import reducers from './components/reducers.js'
+import  ProfilePicAction from './components/Action.js'
 
 
 
-
-
-export class App extends Component {
-    render() {
+export const App = () => {
+    
+    
         return (
             <BrowserRouter>
                     
@@ -38,10 +40,14 @@ export class App extends Component {
            
         )
     }
-}
+
 
 export default App
 
+
+
+
+ 
 
 
 

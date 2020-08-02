@@ -1,24 +1,40 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 
-from leads.models import postss
+from leads.models import postss,accounts
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response 
 from django.http import HttpResponse
 from django.http import JsonResponse
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import AllowAny
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.decorators import api_view,authentication_classes,permission_classes
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 
 
 
-from leads.serializers import PostssSerializer, PictureSerializer, AccountsSerializer
+
+
+from leads.serializers import PostssSerializer, PictureSerializer, AccountsSerializer,ProfileSerializer
 from rest_framework import generics
 
 from rest_framework.generics import ListAPIView
+from rest_framework.generics import RetrieveAPIView
 
 class LeadListCreate(generics.ListCreateAPIView):
     queryset = postss.objects.all()
     serializer_class = PostssSerializer
+
+
+
+class ProfileAPIView( generics.RetrieveAPIView):   
+    serializer_class = ProfileSerializer
+    parser_classes = (MultiPartParser, FormParser)
+
+    def get_object(self):
+        print(accounts.objects.get(user=self.request.user))
+        return accounts.objects.get(user=self.request.user)
 
 
 
@@ -62,17 +78,37 @@ class picture(APIView):
 
 
 
-
+class Logout(APIView):
+    def get(self, request, format=None):
+        # simply delete the token to force a login
+        request.user.auth_token.delete()
+        
 
 class ApiRegister(APIView):
     serializer_class = AccountsSerializer
     permission_classes = [AllowAny]
-
+   
+    
+        
+        
 
     def post (self, request, format=None):
-        serializer = AccountsSerializer(data= request.data)
 
-        print(request.data)
+
+
+
+
+        dataInformation = {
+    "Profile_picture": request.data["Profile_picture"],
+    "user": {
+        "email": request.data["email"],
+        "password": request.data["password"],
+        "username": request.data["username"],
+    },
+}
+        serializer = AccountsSerializer(data= dataInformation)
+
+        print(serializer)
 
         if serializer.is_valid(raise_exception=True):
             serializer.save()
@@ -91,9 +127,14 @@ class ApiRegister(APIView):
 
 
 class ApiPostView(ListAPIView):
-
+    
     queryset = postss.objects.all() 
     serializer_class = PostssSerializer
     pagination_class = PageNumberPagination
-    print("hell")
+
+    def get(self, request):
+        print("dffffffff")
+
+    
+   
 

@@ -1,11 +1,12 @@
 
 import { useFormik } from 'formik';
-import React from 'react';
+import React, { useState } from 'react';
 
+import UploadButton from "./UploadButton";
 
 export default function Register() {
 
-
+  const[pfs,setPf] = useState(null)
 
   const formik = useFormik({
     initialValues: {
@@ -24,13 +25,18 @@ export default function Register() {
         {
         username: values.Username,
         email: values.Email,
-        password: values.Password
+        password: values.Password,
+        profile_picture: pfs,
+
       }
     
     };
 
-
-      
+    var formData = new FormData();
+    formData.append('username', values.Username)
+    formData.append('email', values.Email)
+    formData.append('password', values.Password)
+    formData.append('Profile_picture', pfs)      
       alert(JSON.stringify(valuess));
       
       
@@ -40,11 +46,8 @@ export default function Register() {
       {
         method: "POST",
 
-        body: JSON.stringify(valuess),
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        } 
+        body: formData,
+        
 
       }
       
@@ -52,11 +55,11 @@ export default function Register() {
       ).then((response) => {
         return response.json();
       })
-      .then((myJson) => {
+      .then((Json) => {
 
 
 
-        console.log(myJson)
+        console.log(Json)
 
 
       }
@@ -80,7 +83,14 @@ export default function Register() {
     
   }},});
 
+ const  pf = (picture) => {
 
+    console.log(picture)
+
+    setPf(picture)
+   
+    
+  };
 
 
 
@@ -123,6 +133,11 @@ export default function Register() {
         onChange={formik.handleChange}
         value={formik.values.Password3}
       />
+
+
+      <UploadButton files={pf}/>
+
+
       <button type="submit">Submit</button>
     </form>
 

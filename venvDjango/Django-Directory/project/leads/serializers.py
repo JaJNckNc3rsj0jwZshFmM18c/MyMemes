@@ -13,6 +13,11 @@ class PostssSerializer(serializers.ModelSerializer):
 # Create your views here.
 
 
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = accounts
+        fields = ["id", "Profile_picture"]
+
 
 class PictureSerializer(serializers.ModelSerializer):
     class Meta:
@@ -36,6 +41,9 @@ class AccountsSerializer(serializers.ModelSerializer):
         fields = ["user", "Profile_picture"]
 
     def create(self, validated_data):
+       print(validated_data) 
        user_data = validated_data.pop('user', None) 
        user = User.objects.create_user(**user_data) 
+
+       
        return accounts.objects.create(user=user, **validated_data)

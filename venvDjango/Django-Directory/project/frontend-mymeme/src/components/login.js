@@ -28,7 +28,7 @@ export default function Register(props) {
       
       
      
-      fetch( "http://127.0.0.1:8000/api/token/",
+      fetch( "http://127.0.0.1:8000/api-token-auth/",
 
       {
         method: "POST",
@@ -37,6 +37,7 @@ export default function Register(props) {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
+          
         } 
 
       }
@@ -45,19 +46,38 @@ export default function Register(props) {
       ).then((response) => {
 
         console.log("sqihuiqhwuihsu")
-        return response.json();
+        return response.json()
       })
       .then((myJson) => {
 
+        console.log(myJson.non_field_errors)
+        if(myJson.non_field_errors)
+        {
+        if(myJson.non_field_errors[0] === "Unable to log in with provided credentials.")
+        {
 
 
-        console.log(myJson.access)
-        localStorage.setItem('IsLoggedIn', myJson.access);
-        const { history } = props;
-      if(history)
-      { 
-        history.push('/home');
-  }
+          alert("wrong password or username, please enter again")
+
+
+        }
+
+      }
+        else
+        {
+          localStorage.setItem('IsLoggedIn', myJson.token);
+          localStorage.setItem('user', myJson.user);
+  
+          alert(myJson.user)
+          const { history } = props;
+        if(history)
+        { 
+          history.push('/home');
+    }
+
+          
+        }
+     
 
 
       }

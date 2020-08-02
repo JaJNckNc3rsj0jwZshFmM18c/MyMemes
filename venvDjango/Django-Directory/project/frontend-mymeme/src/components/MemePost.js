@@ -43,7 +43,7 @@ export class MemePost extends Component {
       pagenum: 1,
       Check_Router:false,
 
-      Checker_image: false,
+      
     };
   }
 
@@ -56,7 +56,7 @@ export class MemePost extends Component {
         
 
 
-      this.setState({Checker_image:true})
+      
       const { history } = this.props;
       if(history)
       { 
@@ -69,14 +69,14 @@ export class MemePost extends Component {
 
       
       var myHeaders = new Headers();
-     myHeaders.append('Authorization', localStorage.getItem("IsLoggedIn"));
-
+     
+      alert("welcome" + localStorage.getItem('user'))
      
 
       fetch(
         "http://127.0.0.1:8000/api/lead/?page=1",
 
-        { method: "GET", headers: { Authorization: "Bearer " + localStorage.getItem("IsLoggedIn") }}
+        { method: "GET", headers: { Authorization: "Token " + localStorage.getItem("IsLoggedIn") }}
       )
         .then((response) => {
           return response.json();
@@ -126,16 +126,26 @@ export class MemePost extends Component {
 
 
 setRef = (el) => {
+
+  
  
- if(this.state.Checker_image === true)
- {
-  console.log("set ref");
+ 
+  console.log("sjsijijsiji");
+
+
+  if(localStorage.getItem('logout') === null )
+  {
+  console.log(localStorage.getItem('logout'))
   this.myRef.current = el;
   this.startObserving();
- }
+  }
+
 };
 
 startObserving = () => {
+
+    
+
   if (this.myRef.current !== this.observeRef.current) {
     console.log("observing el: ", this.myRef.current);
     this.observeRef.current = this.myRef.current;
@@ -145,11 +155,10 @@ startObserving = () => {
 
 componentWillUnmount()
 {
-  if(this.state.Checker_image === true)
- {
+  
   console.log("hello componentWillinMoid");
-  this.observer.unobserve(this.myRef.current);
- }
+  this.observer.disconnect(this.observeRef.current);
+ 
 }
 
 componentDidUpdate(prevprops, prevState)
@@ -165,10 +174,7 @@ componentDidUpdate(prevprops, prevState)
     fetch(
       "http://127.0.0.1:8000/api/lead/?page=" + this.state.pagenum,
 
-      {
-        method: "GET",
-        Authorization:  JSON.stringify(localStorage.getItem("IsLoggedIn"))
-      }
+      { method: "GET", headers: { Authorization: "Token " + localStorage.getItem("IsLoggedIn") }}
     )
       .then((response) => {
         return response.json();
@@ -217,11 +223,7 @@ componentDidUpdate(prevprops, prevState)
     fetch(
       "http://127.0.0.1:8000/api/pictures/",
 
-      {
-        method: "POST",
-
-        body: formData,
-      }
+      { method: "POST", body: formData, headers: { Authorization: "Token " + localStorage.getItem("IsLoggedIn") }}
     )
       .then((response) => {
         return response.json();
@@ -263,13 +265,22 @@ Change_PostValue = (event) => {
 };
 
 Post_pic = (picture) => {
-  if (picture.path.match(".png")) {
+
+  console.log(picture)
+  try {
+  if (picture.path.match(".png") ) {
     console.log("Image");
     this.setState({ Pictures: picture, Checker_image: true });
   } else {
     console.log("Video");
     this.setState({ Pictures: picture, Checker_image: false });
   }
+}catch(error){
+
+  this.setState({ Pictures: picture, Checker_image: true });
+
+
+}
 };
 
 Ajax_Posts_True = () => {
@@ -281,7 +292,7 @@ Ajax_Posts_True = () => {
       this.state.Checker_image,
     ],
   ];
-
+   console.log(this.state.picture + "malcom")
   this.setState((prev) => ({
     Personal_Ajax: [...array_z, ...prev.Personal_Ajax],
   }));
@@ -295,48 +306,7 @@ Ajax_Posts_True = () => {
 
 Gifs_1 = () => {
   this.setState({ Gifs: <Tenor_Gif Files_Gif={this.Post_pic} /> });
-  fetch(
-    "http://127.0.0.1:8000/api/lead/?page=" + this.state.pagenum,
-
-    {
-      method: "GET",
-    }
-  )
-    .then((response) => {
-      return response.json();
-    })
-    .then((myJson) => {
-      const Get_Array = myJson.results.map((x) => {
-        if (x.Pictures_file !== null) {
-          this.Pushing_Objects.push([
-            { display: "block" },
-            x.descriptions,
-            x.Pictures_file,
-            true,
-          ]);
-        } else if (x.GIFS_String !== null) {
-          this.Pushing_Objects.push([
-            { display: "block" },
-            x.descriptions,
-            x.GIFS_String,
-          ]);
-        } else if (x.Videos_file !== null) {
-          this.Pushing_Objects.push([
-            { display: "block" },
-            x.descriptions,
-            x.GIFS_String,
-            false,
-          ]);
-        }
-      });
-
-      {
-        console.log(this.Pushing_Objects);
-      }
-      this.setState({
-        Personal_Ajax: this.state.Personal_Ajax.concat(this.Pushing_Objects),
-      });
-    });
+  
 };
 
 render()

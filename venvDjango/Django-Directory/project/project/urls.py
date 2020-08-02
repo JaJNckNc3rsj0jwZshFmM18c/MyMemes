@@ -18,7 +18,7 @@ from django.urls import path
 import rest_framework_simplejwt 
 from django.urls import path, include
 from django.views.decorators.csrf import csrf_exempt
-
+from rest_framework.authtoken.views import obtain_auth_token
 
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -27,7 +27,7 @@ from rest_framework_simplejwt.views import (
 
 urlpatterns = [
                path('', include('leads.urls')), path('admin/', admin.site.urls),
-               path('api-auth/',  include('rest_framework.urls')),
+               path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
                path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
                ]

@@ -36,7 +36,13 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+SIMPLE_JWT = {
+    
+    
+    'USER_ID_CLAIM': 'user_id',
 
+    
+}
 
 REST_FRAMEWORK = {
 
@@ -49,7 +55,8 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+       # 'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+       'rest_framework.authentication.TokenAuthentication',
     ),
 
 }
@@ -64,7 +71,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles', 'leads', 'rest_framework','corsheaders',
+    'django.contrib.staticfiles', 'leads', 'rest_framework','corsheaders','rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
