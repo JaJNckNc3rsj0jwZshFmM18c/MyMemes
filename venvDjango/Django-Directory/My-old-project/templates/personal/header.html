@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+
+      
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+  <!-- <link type="text/css" rel="stylesheet" href="/static/personal/materialize/css/materialize.min.css"  media="screen,projection"/>  -->
+      <link rel="stylesheet" type="text/css" href="/static/mymeme.css" media="screen" />
+     <!--- <link  rel="stylesheet" href="/static/personal/materialize/materialize.css" />   -->
+     <!---<link  rel="stylesheet" href="/static/personal/materialize.css" /> --->
+
+ <!-- <link  rel="stylesheet" href="/static/materialize.css" />      -->
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <script src="/static/myjs.js">   
+      </script>
+    
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/personal/csss/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="sticky-footer-navbar.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <header>
+      <!-- Fixed navbar -->
+     
+          <div class="h">
+           <!--    <img src="{{Pictures.Logo_Pic}}" alt="Smiley face" height="42" width="42">                                        <a href="#!" class="brand-logo">Meme</a>        --> 
+
+              <input type="text" id="ip2"/>
+              
+
+           
+           
+            
+           <!---<li><i class="material-icons-left ">search</i></a></li>---> 
+
+           <img  class="Logo"  src="{{Picture_context.Logo_Pic.url}} ">
+            <ul>
+
+              <div class="dropdown">
+                
+                <div id="myDropdown" class="dropdown-content">
+                  <a href="#home">Home</a>
+                  <a href="#about">About</a>
+                  <a href="#contact">Contact</a>
+                </div>
+              </div>
+              
+              
+              <li>  <a   id="Home"  href="sass.html">     <i  class = "material-icons left">home </i>   </a></li>
+              {% if user.is_authenticated %}
+              <li><a id ="Upload" href="/upload/"  ><i class = "material-icons left">cloud_upload</i>        Upload   </a>  </li>
+
+              {%endif%}
+              {% if not user.is_authenticated %}
+
+                <li> <p id="Log_in">Log in</p></li> 
+                
+                  
+                      {%endif%}
+                      {% if not user.is_authenticated %}
+
+                           <li> <p>Sign up</p> </li> 
+
+                          
+
+                       {%endif%}
+             
+              <li><p  class="username">{{user.username}}</p></li>
+              
+
+                      
+
+
+
+              
+              <!-- Dropdown Trigger -->
+              <li>
+                  
+               <div class="move-profile">
+                <div class="image-cropper">
+
+                
+                
+                <img   src="{{user.accounts.Profile_picture.url}} " id ="profile-pic"  onclick="myFunction()"> 
+
+                </div>
+
+              </div>   
+                  <div  id = "parents"> 
+ 
+
+                  </div> 
+                  <p id = "demo"></p>      
+                </div>           
+              </div> 
+            </ul>
+          </div>
+        
+    </header>
+    <!-- <form method="GET"  class="form-inline mt-2 mt-md-0">
+
+
+        <input name="q" value="{{requst.GET.q}}"  class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button href= "http://127.0.0.1:8000/results/"  class="btn btn-outline-success my-2 my-sm-0" type="Submit">Search</button>
+      </form>
+     -->
+    <!-- Begin page content -->
+    <main role="main" class="container">
+
+        
+        
+
+		<!--<div class='container-fluid'>
+          <ul id="tabs" class="tabs tabs-fixed-width tab-demo z-depth-1">
+              <li class="tab"><a class= "#active" href="http://127.0.0.1:8000/Subscriptions/">Subscriptions</a></li>
+              <li class="tab"><a class="#active" href="http://127.0.0.1:8000/mostLiked/">Most Liked</a></li>
+              <li class="tab"><a class= "#active" href="http://127.0.0.1:8000/TrendingPage/">Trending</a></li>
+          
+            </ul>
+          
+            </ul>
+          
+          
+          </div>
+          -->	
+
+          <div class = "hello">
+
+
+
+
+            MostLiked              Trending             Subscription         
+            
+            </div>
+        
+            
+            
+				<br><br>
+					 {% block content %}
+					 {% endblock %}	
+				</div>
+    </main>
+  
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">Twitter</span>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!--- Popper --->
+    
+    {% block javascript %}
+
+    <!--- Popper --->
+<script type="text/javascript" src="js/materialize.min.js"></script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" type="text/javascript"></script>
+<!-- jQuery -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+      <!-- Tether - required by BS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+      <!-- Bootstrap 4 -->
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+{% endblock %}
+
+    
+  </body>
+</html>
